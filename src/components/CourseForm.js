@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Tags from './Tags';
 
+import { API_URL } from '../App';
+
 export default function CourseForm({ courseAdded }) {
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
@@ -16,7 +18,7 @@ export default function CourseForm({ courseAdded }) {
   const submitCourse = async e => {
     e.preventDefault();
     try {
-      await fetch('/api/courses', {
+      await fetch(API_URL, {
         method: 'POST',
         body: JSON.stringify({
           name,

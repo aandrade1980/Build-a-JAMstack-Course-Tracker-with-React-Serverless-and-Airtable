@@ -3,12 +3,14 @@ import './App.css';
 import CourseList from './components/CourseList';
 import CourseForm from './components/CourseForm';
 
+export const API_URL = '.netlify/functions/courses';
+
 function App() {
   const [courses, setCourses] = useState([]);
 
   const loadCourses = async () => {
     try {
-      const res = await fetch('.netlify/functions/courses');
+      const res = await fetch(API_URL);
       const courses = await res.json();
       setCourses(courses);
     } catch (err) {

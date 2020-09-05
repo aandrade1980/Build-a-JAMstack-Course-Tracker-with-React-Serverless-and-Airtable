@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { API_URL } from '../App';
+
 export default function Course({ course, refreshCourses }) {
   const markCoursePurchased = async () => {
     try {
-      await fetch('/api/courses', {
+      await fetch(API_URL, {
         method: 'PUT',
         body: JSON.stringify({ ...course, purchased: true })
       });
@@ -15,7 +17,7 @@ export default function Course({ course, refreshCourses }) {
 
   const deleteCourse = async () => {
     try {
-      await fetch('/api/courses', {
+      await fetch(API_URL, {
         method: 'DELETE',
         body: JSON.stringify({ id: course.id })
       });
